@@ -15294,7 +15294,7 @@ Transform:
   m_GameObject: {fileID: 1604497770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8512824, y: 0.19405945, z: 0}
+  m_LocalPosition: {x: -2.397, y: 0.196, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15312,11 +15312,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.0481975
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -15341,7 +15341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: 1
-  fuerzaSalto: 3
+  fuerzaSalto: 4
   sonidoSalto: {fileID: 8300000, guid: efc32a6c728875241a145a5d06a751d5, type: 3}
 --- !u!82 &1604497777
 AudioSource:
