@@ -1,64 +1,67 @@
 using UnityEngine;
+using System;
+using UnityEngine.TextCore.Text;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
-    public float velocidadMovimiento = 5f;
-    public float fuerzaSalto = 15f;
-    public AudioClip sonidoSalto;
+    public static Action<int> OnLifeChanged;
+    public static Action<int> OnScoreChanged;
+
+    [Header("Movimiento")]
+    public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+    public Transform shootPoint;
+    public GameObject bulletPrefab;
 
     private Rigidbody2D rb;
-    private AudioSource audioSource;
-    private bool enSuelo = true;
-    private LifeManager vidaManager;
-    void Awake()
+    private int score;
 
-        {
-            rb = GetComponent<Rigidbody2D>();
-            audioSource = GetComponent<AudioSource>();
-            vidaManager = Object.FindFirstObjectByType<LifeManager>(); 
-        }
-    
+    protected override void Awake()
+    {
+        base.Awake();
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        float direccion = 0f;
-
-        if (Input.GetKey(KeyCode.A))
-            direccion = -1f;
-        else if (Input.GetKey(KeyCode.D))
-            direccion = 1f;
-
-        MoverHorizontal(direccion);
-
+        Move();
         if (Input.GetKeyDown(KeyCode.Space))
-            Saltar();
+            Jump();
+        if (Input.GetMouseButtonDown(0))
+            Shoot();
     }
 
-    void MoverHorizontal(float direccion)
+    private void Move()
     {
-        Vector2 velocidad = rb.linearVelocity; 
-        velocidad.x = direccion * velocidadMovimiento;
-        rb.linearVelocity = velocidad;          
+        float move = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
     }
 
-    void Saltar()
+    private void Jump()
     {
-        if (enSuelo)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto); 
-            audioSource.PlayOneShot(sonidoSalto);
-            enSuelo = false;
-        }
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void Shoot()
     {
-        if (col.gameObject.CompareTag("Suelo"))
-            enSuelo = true;
+        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+    }
 
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            vidaManager.QuitarVida(1);
-        }
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        OnLifeChanged?.Invoke(currentHealth);
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        OnScoreChanged?.Invoke(score);
+    }
+
+    protected override void Die()
+    {
+        Debug.Log("Jugador muerto");
+        
     }
 }
