@@ -9,12 +9,15 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private bool enSuelo = true;
-
+    private LifeManager vidaManager;
     void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
-    }
+
+        {
+            rb = GetComponent<Rigidbody2D>();
+            audioSource = GetComponent<AudioSource>();
+            vidaManager = Object.FindFirstObjectByType<LifeManager>(); 
+        }
+    
 
     void Update()
     {
@@ -52,5 +55,10 @@ public class Player : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Suelo"))
             enSuelo = true;
+
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            vidaManager.QuitarVida(1);
+        }
     }
 }
