@@ -34,7 +34,7 @@ public class Player : Character
     private void Move()
     {
         float move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
     }
 
     private void Jump()
