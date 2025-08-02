@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public abstract class Enemy : Character
+public abstract class Enemy : MonoBehaviour
 {
     public float moveSpeed = 2f;
+    public int health = 3;
 
-    protected virtual void Move() { }
-
-    protected override void Die()
+    public virtual void TakeDamage(int amount)
     {
-        Destroy(gameObject);
+        health -= amount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
