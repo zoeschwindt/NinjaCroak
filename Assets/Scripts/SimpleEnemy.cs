@@ -2,26 +2,37 @@ using UnityEngine;
 
 public class SimpleEnemy : Enemy
 {
+    public Transform puntoIzquierdo;
+    public Transform puntoDerecho;
+    private bool moviendoDerecha = true;
+
     void Update()
     {
-        Move();
+        Patrullar();
     }
 
-    protected override void Move()
+    private void Patrullar()
     {
-        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        if (moviendoDerecha)
+        {
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            if (transform.position.x >= puntoDerecho.position.x)
+                moviendoDerecha = false;
+        }
+        else
+        {
+            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+            if (transform.position.x <= puntoIzquierdo.position.x)
+                moviendoDerecha = true;
+        }
     }
 
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealthUI health = collision.gameObject.GetComponent<PlayerHealthUI>();
-            if (health != null)
-            {
-                health.TakeDamage(1);
-            }
+            if (health != null) health.TakeDamage(1);
         }
     }
 }
