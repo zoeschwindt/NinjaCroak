@@ -21,4 +21,17 @@ public class BossEnemy : Enemy
     {
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
+
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealthUI health = collision.gameObject.GetComponent<PlayerHealthUI>();
+            if (health != null)
+            {
+                health.TakeDamage(2);
+            }
+        }
+    }
 }
