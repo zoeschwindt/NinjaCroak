@@ -12716,6 +12716,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.30076447, y: 0.049847007}
   m_EdgeRadius: 0
+--- !u!1 &1227274097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227274098}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1227274098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227274097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1143, y: 0.0022, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1604497774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233514034
 GameObject:
   m_ObjectHideFlags: 0
@@ -17665,6 +17696,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 519420032}
+  - {fileID: 1227274098}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1604497775
@@ -17804,10 +17836,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  moveSpeed: 2
+  moveSpeed: 1.5
   jumpForce: 0.2
-  shootPoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  shootPoint: {fileID: 1227274098}
+  bulletPrefab: {fileID: 7307277166646821715, guid: b5475c06e0df1b2459c434de5bc40fe9, type: 3}
 --- !u!1 &1650379477
 GameObject:
   m_ObjectHideFlags: 0
