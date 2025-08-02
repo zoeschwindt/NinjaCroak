@@ -18,8 +18,9 @@ public class AdvancedEnemy : Enemy
     public float tiempoEntreDisparos = 2f;
     private float temporizadorDisparo;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start(); 
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

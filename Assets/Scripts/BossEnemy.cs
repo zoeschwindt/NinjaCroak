@@ -15,8 +15,9 @@ public class BossEnemy : Enemy
     private Transform player;
     private Rigidbody2D rb;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start(); 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -58,16 +59,15 @@ public class BossEnemy : Enemy
         }
     }
 
-   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealthUI health = collision.gameObject.GetComponent<PlayerHealthUI>();
             if (health != null)
             {
-                health.TakeDamage(2);
+                health.TakeDamage(2); 
             }
         }
 

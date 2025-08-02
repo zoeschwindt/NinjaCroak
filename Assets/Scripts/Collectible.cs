@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour, ICollectible
 {
-    public int points = 1;
-
     public void Collect()
     {
-        GameManager.Instance.AddScore(points);
+        GameManager.Instance.AddCollectible();
         Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.RegisterCollectible(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
