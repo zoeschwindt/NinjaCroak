@@ -10,6 +10,7 @@ TagManager:
   - Fondo
   - Collectible
   - Projectile
+  - BreakableBox
   layers:
   - Default
   - TransparentFX
