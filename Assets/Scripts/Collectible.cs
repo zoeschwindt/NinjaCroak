@@ -1,24 +1,18 @@
-using System.Linq;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour, ICollectible
 {
-    public int points = 10;
+    public int points = 1;
 
-    [System.Obsolete]
     public void Collect()
     {
-        FindObjectOfType<Player>().AddScore(points);
+        GameManager.Instance.AddScore(points);
         Destroy(gameObject);
-       
     }
 
-    [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
             Collect();
     }
-   
-
 }
