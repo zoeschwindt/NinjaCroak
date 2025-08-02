@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour, ICollectible
@@ -9,6 +10,7 @@ public class Collectible : MonoBehaviour, ICollectible
     {
         FindObjectOfType<Player>().AddScore(points);
         Destroy(gameObject);
+       
     }
 
     [System.Obsolete]
@@ -17,4 +19,6 @@ public class Collectible : MonoBehaviour, ICollectible
         if (collision.CompareTag("Player"))
             Collect();
     }
+   
+
 }

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             OnLevelComplete?.Invoke();
     }
 
-    // Ejemplo de uso de LINQ para encontrar enemigo más cercano
+
     public Enemy GetClosestEnemy(Vector3 position)
     {
         return enemies

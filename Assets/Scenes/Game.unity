@@ -15783,7 +15783,7 @@ GameObject:
   - component: {fileID: 1604497772}
   - component: {fileID: 1604497771}
   - component: {fileID: 1604497775}
-  - component: {fileID: 1604497776}
+  - component: {fileID: 1604497778}
   - component: {fileID: 1604497777}
   m_Layer: 0
   m_Name: Raphael
@@ -15958,21 +15958,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1604497776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604497770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16ce874ef5a1f94f997c7bda1c52697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadMovimiento: 6
-  fuerzaSalto: 6
-  sonidoSalto: {fileID: 8300000, guid: efc32a6c728875241a145a5d06a751d5, type: 3}
 --- !u!82 &1604497777
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15980,7 +15965,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604497770}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: efc32a6c728875241a145a5d06a751d5, type: 3}
@@ -16070,6 +16055,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1604497778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604497770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16ce874ef5a1f94f997c7bda1c52697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  moveSpeed: 5
+  jumpForce: 5
+  shootPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!1 &1650379477
 GameObject:
   m_ObjectHideFlags: 0
