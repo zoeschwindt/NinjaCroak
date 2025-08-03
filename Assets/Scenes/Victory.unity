@@ -1112,7 +1112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333, y: 335}
+  m_AnchoredPosition: {x: -348, y: 314}
   m_SizeDelta: {x: 449.5538, y: 282.5291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758387865
@@ -1139,8 +1139,8 @@ MonoBehaviour:
     d\xEDa como un verdadero maestro pizzero ninja! \nAhora and\xE1 a descansar\u2026
     o a comer\u2026 \xA1o las dos cosas!\n\xA1Nos vemos en la secuela,\_mutante!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -122,11 +122,23 @@ public class Player : Character
         float move = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
-        // Girar personaje según dirección manteniendo el tamaño original
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
         if (move > 0)
-            transform.localScale = new Vector3(Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // derecha
+            sr.flipX = false;
         else if (move < 0)
-            transform.localScale = new Vector3(-Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // izquierda
+            sr.flipX = true;
+        if (move > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            shootPoint.localPosition = new Vector3(0.5f, shootPoint.localPosition.y, 0f); 
+        }
+        else if (move < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            shootPoint.localPosition = new Vector3(-0.5f, shootPoint.localPosition.y, 0f); 
+        }
+
     }
 
     private void Jump()
@@ -140,10 +152,17 @@ public class Player : Character
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Vector2 shootDir = sr.flipX ? Vector2.left : Vector2.right;
+
+        bullet.GetComponent<Shoot>().SetDirection(shootDir);
+
         if (shootSound != null)
             audioSource.PlayOneShot(shootSound);
     }
+
 
     public void AddPowerUp(PowerUp.PowerType type)
     {
