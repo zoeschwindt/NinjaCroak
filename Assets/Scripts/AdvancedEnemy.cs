@@ -18,10 +18,17 @@ public class AdvancedEnemy : Enemy
     public float tiempoEntreDisparos = 2f;
     private float temporizadorDisparo;
 
+    private Vector3 escalaOriginal;
+
     protected override void Start()
     {
-        base.Start(); 
+        base.Start();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        escalaOriginal = new Vector3(
+            Mathf.Abs(transform.localScale.x),
+            transform.localScale.y,
+            transform.localScale.z
+        );
     }
 
     void Update()
@@ -48,12 +55,16 @@ public class AdvancedEnemy : Enemy
         if (moviendoDerecha)
         {
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            MirarHacia(true);
+
             if (transform.position.x >= puntoDerecho.position.x)
                 moviendoDerecha = false;
         }
         else
         {
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+            MirarHacia(false);
+
             if (transform.position.x <= puntoIzquierdo.position.x)
                 moviendoDerecha = true;
         }
@@ -61,10 +72,18 @@ public class AdvancedEnemy : Enemy
 
     private void PerseguirJugador()
     {
-        if (player.position.x > transform.position.x)
+        bool jugadorADerecha = player.position.x > transform.position.x;
+
+        if (jugadorADerecha)
+        {
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        }
         else
+        {
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        }
+
+        MirarHacia(jugadorADerecha);
     }
 
     private void Disparar()
@@ -73,26 +92,25 @@ public class AdvancedEnemy : Enemy
 
         if (temporizadorDisparo >= tiempoEntreDisparos)
         {
-           
             Vector2 direccion = (player.position - firePoint.position).normalized;
 
-            
             GameObject bala = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-
-            
             bala.GetComponent<EnemyBullet>().SetDirection(direccion);
 
             temporizadorDisparo = 0f;
         }
     }
 
-    private void MirarHacia(Vector2 objetivo)
+    // Esta función gira el enemigo sin deformarlo
+    private void MirarHacia(bool haciaDerecha)
     {
-        if (objetivo.x > transform.position.x)
-            transform.localScale = new Vector3(1, 1, 1);
-        else
-            transform.localScale = new Vector3(-1, 1, 1);
+        transform.localScale = new Vector3(
+            haciaDerecha ? Mathf.Abs(escalaOriginal.x) : -Mathf.Abs(escalaOriginal.x),
+            escalaOriginal.y,
+            escalaOriginal.z
+        );
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

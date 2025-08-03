@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public event Action<int, int> OnCollectiblesChanged; 
-    public event Action<int, int> OnEnemiesChanged;      
-    public event Action<int> OnLivesChanged;             
-    public event Action<int> OnScoreChanged;             
+    public event Action<int, int> OnCollectiblesChanged;
+    public event Action<int, int> OnEnemiesChanged;
+    public event Action<int> OnLivesChanged;
+    public event Action<int> OnScoreChanged;
 
     [Header("Objetivos del Nivel")]
     public int totalCollectibles = 5;
@@ -20,22 +20,28 @@ public class GameManager : MonoBehaviour
     [Header("Jugador")]
     public int maxLives = 4;
 
+    [Header("Transición de Nivel")]
+    public string nextSceneName = "Nivel2";
+
     private int collectedCount = 0;
     private int defeatedEnemies = 0;
     private int currentLives;
     private int score;
 
-    // Listas genéricas
     private GameList<ICollectible> collectibles = new GameList<ICollectible>();
     private GameList<IDamageable> enemies = new GameList<IDamageable>();
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
         currentLives = maxLives;
     }
 
-    //COLECCIONABLES
+    // COLECCIONABLES
     public void RegisterCollectible(ICollectible collectible)
     {
         collectibles.Add(collectible);
@@ -48,7 +54,7 @@ public class GameManager : MonoBehaviour
         CheckLevelComplete();
     }
 
-    //ENEMIGOS
+    // ENEMIGOS
     public void RegisterEnemy(IDamageable enemy)
     {
         enemies.Add(enemy);
@@ -69,7 +75,6 @@ public class GameManager : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            // Guarda escena actual antes de morir
             GameSession.LastSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Moriste");
         }
@@ -91,7 +96,14 @@ public class GameManager : MonoBehaviour
     {
         if (collectedCount >= totalCollectibles && defeatedEnemies >= totalEnemies)
         {
-            SceneManager.LoadScene("Nivel2");
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
+            else
+            {
+                Debug.LogWarning("Nombre de escena siguiente no asignado en el GameManager.");
+            }
         }
     }
 }

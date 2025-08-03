@@ -1262,7 +1262,7 @@ Transform:
   m_GameObject: {fileID: 348511281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.134, y: 0.195, z: 0}
+  m_LocalPosition: {x: 34.055, y: 0.195, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9875,11 +9875,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 421474341906056092, guid: 14c4f39b3cbfe064f8740331b503ef27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9567864
+      value: 29.1
       objectReference: {fileID: 0}
     - target: {fileID: 421474341906056092, guid: 14c4f39b3cbfe064f8740331b503ef27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19646218
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 421474341906056092, guid: 14c4f39b3cbfe064f8740331b503ef27, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11602,6 +11602,7 @@ MonoBehaviour:
   totalCollectibles: 5
   totalEnemies: 10
   maxLives: 4
+  nextSceneName: Victory
 --- !u!4 &827410416
 Transform:
   m_ObjectHideFlags: 0

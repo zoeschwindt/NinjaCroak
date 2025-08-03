@@ -45,7 +45,15 @@ public class Player : Character
 
     [Header("Audio")]
     public AudioClip shootSound;       
-    private AudioSource audioSource;   
+    private AudioSource audioSource;
+
+
+    private Vector3 escalaOriginal;
+
+    private void Start()
+    {
+        escalaOriginal = transform.localScale;
+    }
 
     protected override void Awake()
     {
@@ -113,6 +121,12 @@ public class Player : Character
     {
         float move = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+
+        // Girar personaje según dirección manteniendo el tamaño original
+        if (move > 0)
+            transform.localScale = new Vector3(Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // derecha
+        else if (move < 0)
+            transform.localScale = new Vector3(-Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // izquierda
     }
 
     private void Jump()

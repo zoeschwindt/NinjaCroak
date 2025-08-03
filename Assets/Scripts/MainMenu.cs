@@ -1,7 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class MainMenu : MonoBehaviour
 {
+    void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None; 
+    }
 
     public void Jugar()
     {
@@ -16,7 +22,6 @@ public class MainMenu : MonoBehaviour
 
     public void VolverJugar()
     {
-        // Carga la última escena antes de morir
         SceneManager.LoadScene(GameSession.LastSceneName);
     }
 
@@ -29,5 +34,4 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
-
 }

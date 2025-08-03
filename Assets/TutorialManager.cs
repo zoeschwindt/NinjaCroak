@@ -38,6 +38,9 @@ public class TutorialManager : MonoBehaviour, IDialogue
 
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         player = FindObjectOfType<Player>();
         if (player != null) player.EnableControl(false);
 
@@ -104,6 +107,11 @@ public class TutorialManager : MonoBehaviour, IDialogue
         tutorialPanel.SetActive(false);
 
         if (player != null) player.EnableControl(true);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+
 
         OnTutorialFinished?.Invoke();
     }
