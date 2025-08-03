@@ -1,16 +1,16 @@
 using UnityEngine;
+using System;
 
 public class PlayerFallHandler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public float fallThreshold = -10f;
+    public static event Action OnPlayerFall; 
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.y < fallThreshold)
+        {
+            OnPlayerFall?.Invoke(); 
+        }
     }
 }

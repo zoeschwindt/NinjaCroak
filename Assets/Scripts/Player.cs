@@ -23,6 +23,8 @@ public class Player : Character
     private Rigidbody2D rb;
     private int score;
 
+    [Header("Muerte por caída")]
+    public float alturaMuerte = -10f;
     // Estados de control
     private bool canControl = true; 
     private bool isSpeedBoosted = false;
@@ -41,6 +43,10 @@ public class Player : Character
 
     private bool wasGrounded = false;
 
+    [Header("Audio")]
+    public AudioClip shootSound;       
+    private AudioSource audioSource;   
+
     protected override void Awake()
     {
         base.Awake();
@@ -48,6 +54,8 @@ public class Player : Character
 
         baseMoveSpeed = moveSpeed;
         baseJumpForce = jumpForce;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 
         foreach (PowerUp.PowerType type in Enum.GetValues(typeof(PowerUp.PowerType)))
             powerUpInventory[type] = 0;
@@ -70,6 +78,12 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.E))
             UsePowerUp(PowerUp.PowerType.SpeedBoost);
+
+        if (transform.position.y < alturaMuerte)
+        {
+            Die();
+        }
+
     }
 
     void FixedUpdate()
@@ -113,6 +127,8 @@ public class Player : Character
     private void Shoot()
     {
         Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        if (shootSound != null)
+            audioSource.PlayOneShot(shootSound);
     }
 
     public void AddPowerUp(PowerUp.PowerType type)
@@ -186,6 +202,10 @@ public class Player : Character
 
     protected override void Die()
     {
-        Debug.Log("Jugador muerto");
+        Debug.Log("Jugador muerto por caída");
+
+        // Guarda escena actual antes de morir
+        GameSession.LastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Moriste");
     }
 }

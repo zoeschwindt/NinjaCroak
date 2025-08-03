@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
 
         if (currentLives <= 0)
         {
+            // Guarda escena actual antes de morir
+            GameSession.LastSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Moriste");
         }
     }

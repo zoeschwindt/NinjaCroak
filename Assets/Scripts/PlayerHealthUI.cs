@@ -15,7 +15,7 @@ public class PlayerHealthUI : MonoBehaviour
         UpdateLivesUI();
     }
 
-    
+
     public void TakeDamage(int amount)
     {
         currentLives -= amount;
@@ -25,6 +25,8 @@ public class PlayerHealthUI : MonoBehaviour
 
         if (currentLives <= 0)
         {
+            // Guarda escena actual antes de morir
+            GameSession.LastSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("Moriste");
         }
     }

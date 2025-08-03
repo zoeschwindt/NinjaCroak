@@ -16,7 +16,8 @@ public class MainMenu : MonoBehaviour
 
     public void VolverJugar()
     {
-        SceneManager.LoadScene("Game");
+        // Carga la última escena antes de morir
+        SceneManager.LoadScene(GameSession.LastSceneName);
     }
 
     public void VolverMenu()

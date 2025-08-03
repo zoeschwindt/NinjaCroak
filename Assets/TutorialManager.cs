@@ -95,11 +95,7 @@ public class TutorialManager : MonoBehaviour, IDialogue
         }
 
         
-        var saltoDialog = dialogues.FirstOrDefault(d => d.text.ToLower().Contains("salto"));
-        if (saltoDialog != null)
-        {
-            Debug.Log("Hay un diálogo que menciona el salto: " + saltoDialog.text);
-        }
+       
     }
 
     private void EndTutorial()
