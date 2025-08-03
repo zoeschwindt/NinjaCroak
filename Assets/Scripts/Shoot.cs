@@ -5,6 +5,11 @@ public class Shoot : MonoBehaviour
     public float speed = 10f;
     public int damage = 20;
 
+    void Start()
+    {
+        Destroy(gameObject, 2f);
+    }
+
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
