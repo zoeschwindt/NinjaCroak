@@ -1,14 +1,13 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEngine.TextCore.Text;
 using System.Collections;
 
 public class Player : Character
 {
     public static Action<int> OnLifeChanged;
     public static Action<int> OnScoreChanged;
-    public static Action<PowerUp.PowerType, int> OnPowerUpCollected;   
+    public static Action<PowerUp.PowerType, int> OnPowerUpCollected;
 
     [Header("Movimiento")]
     public float moveSpeed = 5f;
@@ -16,76 +15,80 @@ public class Player : Character
     public Transform shootPoint;
     public GameObject bulletPrefab;
 
+    [Header("Detección Suelo")]
+    public Transform groundCheck;
+    public float groundRadius = 0.2f;
+    public LayerMask groundLayer;
+
     private Rigidbody2D rb;
     private int score;
 
+    // Estados de control
+    private bool canControl = true; 
     private bool isSpeedBoosted = false;
     private bool isJumpBoosted = false;
 
     private float powerUpDuration = 5f;
 
-    private bool canDoubleJump = false;
+    // Doble salto
     private int jumpCount = 0;
     private int maxJumps = 1;
 
+    // Valores base para restaurar stats
     private float baseMoveSpeed;
     private float baseJumpForce;
     private Dictionary<PowerUp.PowerType, int> powerUpInventory = new Dictionary<PowerUp.PowerType, int>();
 
-    public Transform groundCheck;
-    public float groundRadius = 0.2f;
-    public LayerMask groundLayer;
-
-
-
+    private bool wasGrounded = false;
 
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
 
-       
         baseMoveSpeed = moveSpeed;
         baseJumpForce = jumpForce;
 
-        
         foreach (PowerUp.PowerType type in Enum.GetValues(typeof(PowerUp.PowerType)))
             powerUpInventory[type] = 0;
     }
 
-    private bool wasGrounded = false;
+    void Update()
+    {
+        if (!canControl) return; 
 
-void Update()
-{
-    Move();
+        Move();
 
-    if (Input.GetKeyDown(KeyCode.Space))
-        Jump();
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump();
 
-    if (Input.GetMouseButtonDown(0))
-        Shoot();
+        if (Input.GetMouseButtonDown(0))
+            Shoot();
 
-    if (Input.GetKeyDown(KeyCode.Q))      // Q para DoubleJump
-        UsePowerUp(PowerUp.PowerType.DoubleJump);
+        if (Input.GetKeyDown(KeyCode.Q))
+            UsePowerUp(PowerUp.PowerType.DoubleJump);
 
-    if (Input.GetKeyDown(KeyCode.E))      // E para SpeedBoost
-        UsePowerUp(PowerUp.PowerType.SpeedBoost);
-}
+        if (Input.GetKeyDown(KeyCode.E))
+            UsePowerUp(PowerUp.PowerType.SpeedBoost);
+    }
 
     void FixedUpdate()
     {
         bool grounded = IsGrounded();
 
-       
         if (grounded && !wasGrounded)
-        {
-            jumpCount = 0;
-        }
+            jumpCount = 0; 
 
         wasGrounded = grounded;
     }
 
-
+    
+    public void EnableControl(bool enable)
+    {
+        canControl = enable;
+        if (!enable)
+            rb.linearVelocity = Vector2.zero; 
+    }
 
     private bool IsGrounded()
     {
@@ -95,7 +98,7 @@ void Update()
     private void Move()
     {
         float move = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);   
+        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
     }
 
     private void Jump()
@@ -111,7 +114,6 @@ void Update()
     {
         Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
     }
-
 
     public void AddPowerUp(PowerUp.PowerType type)
     {
@@ -137,25 +139,27 @@ void Update()
         }
     }
 
-
     private void ResetStats()
     {
         moveSpeed = baseMoveSpeed;
         jumpForce = baseJumpForce;
+        maxJumps = 1;
     }
 
-    
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
+        GameManager.Instance.LoseLife(amount); // Descuenta vida en GameManager
         OnLifeChanged?.Invoke(currentHealth);
     }
 
     public void AddScore(int amount)
     {
         score += amount;
+        GameManager.Instance.AddScore(amount); // Suma puntaje en GameManager
         OnScoreChanged?.Invoke(score);
     }
+
     private IEnumerator ApplySpeedBoost()
     {
         isSpeedBoosted = true;
@@ -167,11 +171,10 @@ void Update()
         isSpeedBoosted = false;
     }
 
-
     private IEnumerator ApplyJumpBoost()
     {
         isJumpBoosted = true;
-        jumpForce = baseJumpForce * 1f;
+        jumpForce = baseJumpForce * 1.2f;
         maxJumps = 2;
 
         yield return new WaitForSeconds(powerUpDuration);
