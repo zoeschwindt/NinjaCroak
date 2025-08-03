@@ -3965,59 +3965,61 @@ MonoBehaviour:
     image: {fileID: 0}
   - text: "A:Te mov\xE9s a la izquierda.\n\xA1Como cuando corr\xE9s porque viste
       que la pizza se est\xE1 quemando en el horno!"
-    image: {fileID: 0}
+    image: {fileID: 5777826564415621220, guid: a9cc18f60ae93c14f9d02696d707b98e, type: 3}
   - text: "D: Te mov\xE9s a la derecha.\n\xA1Como cuando vas directo al delivery
       a buscar tu combo mutante!\n\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: -6240216175466046131, guid: ad5998362c182dd4a96a493a3d302fb5, type: 3}
   - text: "ESPACIO: Salt\xE1s.\n\xA1Pero no como salt\xE1s de la silla cuando ves
       una cucaracha! \xA1Salt\xE1s con estilo ninja, bro!\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: -8328440752758051461, guid: fc3ad9de15cf76042a32a152f99dba03, type: 3}
   - text: "Click izquierdo del mouse: Dispar\xE1s.\n\xA1Pew pew! Mand\xE1 esas balas
       como si fueran aceitunas en una ensalada que no quer\xE9s comer.\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
-  - text: "Click izquierdo del mouse: Dispar\xE1s.\n\xA1Pew pew! Mand\xE1 esas balas
-      como si fueran aceitunas en una ensalada que no quer\xE9s comer.\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 5878103960941952250, guid: 0a84d1dabc8512240bce441297c21cf8, type: 3}
   - text: "Q: Us\xE1s el power-up de salto:\nPotasius Maximus: Con esto, \xA1salt\xE1s
       como si te hubieras comido 20 bananas con esteroides!\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: -5412910156287300836, guid: 4c971dac1d8935a4bba1815d74d3db00, type: 3}
   - text: "E: Us\xE1s el power-up de velocidad:Vitamina A: \xA1M\xE1s r\xE1pido que
       yo escondiendo el \xFAltimo pedazo de pizza de Raph!  "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: -4150471675066324412, guid: 385cdf5aadb9eee449bca3c488a2dc5f, type: 3}
   - text: "Record\xE1, joven mutante: \xA1No sirve de nada tener poderes si te olvid\xE1s
       de usarlos! Usalos con sabidur\xEDa\u2026 o al menos no te los comas, \xA1que
       no son snacks! "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "Ten\xE9s 4 vidas, como las 4 tortugas ninja\u2026 \xA1pero sin caparaz\xF3n
-      ni pizza gratis! Si las perd\xE9s todas\u2026 fuiste, my dude. Tu misi\xF3n,
-      si decid\xEDs aceptarla (y vas a aceptarla, \xBFno?): Recolect\xE1 todas las
-      frutas.Elimin\xE1 a los enemigos.Y si hac\xE9s todo eso sin pisar un hongo
-      asesino, pas\xE1s al siguiente nivel. "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+      ni pizza gratis! Si las perd\xE9s todas\u2026 fuiste, my dude."
+    image: {fileID: 21300000, guid: a50b74436d54e6b4f9a299d5fffb9d37, type: 3}
+  - text: "Tu misi\xF3n, si decid\xEDs aceptarla (y vas a aceptarla, \xBFno?): Recolect\xE1
+      todas las frutas."
+    image: {fileID: 21300000, guid: 648855c51ce016c46b4bac496e5ead78, type: 3}
+  - text: "Elimin\xE1 a los enemigos.Y si hac\xE9s todo eso sin pisar un hongo asesino,
+      pas\xE1s al siguiente nivel. "
+    image: {fileID: 0}
   - text: "Pero ojo, bro\u2026 \xA1Hay hongos peligrosos! \xA1S\xED, como esos que
       te caen mal en la pizza! Y no te olvides de los lanza-guisantes. S\xED, escuchaste
       bien\u2026 guisantes que tiran guisantes. \xBFQui\xE9n los dej\xF3 entrar al
       sindicato? "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "Cuidado donde pisas:Las trampas, que son tan peligrosas y filosas como
       las katanas de Leo.Las moviles, rapidas y letales como el maestro Splinter.\xA1Usalas
       con estilo ninja! "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "\xA1Lo est\xE1s haciendo de diez, saltar\xEDn mutante!\nCre\xE9 en vos
       como creo en la pizza con extra queso.\n\xA1Yo s\xE9 que pod\xE9s lograrlo!\n\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "Pero cuando termines este nivel\u2026\nTe vas a enfrentar a un jefe mutante
       legendario: \xA1El terrible rinoceronte Rocksteady!\nS\xED, ese grandote con
       cara de mala onda y m\xFAsculos que parecen inflados con bomba de bicicleta.\n"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "Para ganar el juego, ten\xE9s que derrotarlo. As\xED que entren\xE1 esos
       dedos y ajustate la bandana. "
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+    image: {fileID: 0}
   - text: "\xA1Ahora and\xE1, recolect\xE1 frutas, pate\xE1 hongos y esquiv\xE1 guisantes
-      como un verdadero maestro del teclado!\nY si la cosa se pone dif\xEDcil, pens\xE1:\n\xBFQu\xE9
-      har\xEDa una tortuga ninja?\n(Respuesta: \xA1Pizza, saltos y patadas giratorias,
-      pap\xE1!)\n\xA1Nos vemos en el pr\xF3ximo nivel, campe\xF3n mutante!\nCOWABUNGA!!!"
-    image: {fileID: -5931710532366847867, guid: 090090925650907419dd7dbe7fc05626, type: 3}
+      como un verdadero maestro del teclado!\n"
+    image: {fileID: 21300000, guid: 270ef764606bac743ada790d460f2317, type: 3}
+  - text: "Y si la cosa se pone dif\xEDcil, pens\xE1:\n\xBFQu\xE9 har\xEDa una tortuga
+      ninja?\n(Respuesta: \xA1Pizza, saltos y patadas giratorias, pap\xE1!)\n\xA1Nos
+      vemos en el pr\xF3ximo nivel, campe\xF3n mutante!\nCOWABUNGA!!! "
+    image: {fileID: 0}
 --- !u!1 &744222902
 GameObject:
   m_ObjectHideFlags: 0
@@ -16368,7 +16370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00098038, y: -0.010283}
+  m_AnchoredPosition: {x: -0.020016, y: -0.00045634}
   m_SizeDelta: {x: 1437.2, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262154563
@@ -18599,6 +18601,7 @@ GameObject:
   - component: {fileID: 1604497778}
   - component: {fileID: 1604497777}
   - component: {fileID: 1604497779}
+  - component: {fileID: 1604497780}
   m_Layer: 0
   m_Name: Raphael
   m_TagString: Player
@@ -18912,6 +18915,18 @@ MonoBehaviour:
   - {fileID: 1650379479}
   - {fileID: 1947004794}
   - {fileID: 1721979308}
+--- !u!114 &1604497780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604497770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32182564276c3e94298cea18ea0ee404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1613666616
 GameObject:
   m_ObjectHideFlags: 0
@@ -19882,8 +19897,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Previous
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22028,7 +22043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -189, y: 378}
+  m_AnchoredPosition: {x: -211, y: 347.93}
   m_SizeDelta: {x: 110.7129, y: 103.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2053251659
@@ -22159,8 +22174,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
