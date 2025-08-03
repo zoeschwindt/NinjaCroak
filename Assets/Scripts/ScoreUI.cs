@@ -31,7 +31,7 @@ public class ScoreUI : MonoBehaviour
     void UpdateCollectiblesUI(int current, int total)
     {
         if (collectiblesText != null)
-            collectiblesText.text = $"{current} / {total}";
+            collectiblesText.text = $"{current}/{total}";
 
         if (iconoRecoleccion != null)
             StartCoroutine(ShowIcon());
@@ -43,7 +43,7 @@ public class ScoreUI : MonoBehaviour
     void UpdateEnemiesUI(int current, int total)
     {
         if (enemiesText != null)
-            enemiesText.text = $"{current} / {total}";
+            enemiesText.text = $"{current}/{total}";
     }
 
     IEnumerator ShowIcon()

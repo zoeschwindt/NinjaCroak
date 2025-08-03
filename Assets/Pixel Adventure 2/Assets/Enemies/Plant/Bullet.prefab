@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7679233440606905872}
   - component: {fileID: 6671113599024996214}
   - component: {fileID: 4985670572693568067}
-  - component: {fileID: 664412224637100445}
   - component: {fileID: 6677719921354824471}
+  - component: {fileID: 4736806672419511736}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Projectile
@@ -126,20 +126,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.0006740093, y: 0}
   m_Radius: 0.047643423
---- !u!114 &664412224637100445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6140356386374667728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8f4fa0e735e714ba36171766791b32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  damage: 20
 --- !u!50 &6677719921354824471
 Rigidbody2D:
   serializedVersion: 5
@@ -148,7 +134,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6140356386374667728}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -167,3 +153,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4736806672419511736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140356386374667728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05de8192d222d15448398ffbc24be8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 1.5
+  tiempoVida: 3

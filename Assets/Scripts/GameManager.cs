@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Objetivos del Nivel")]
     public int totalCollectibles = 5;
-    public int totalEnemies = 18;
+    public int totalEnemies = 12;
 
     [Header("Jugador")]
     public int maxLives = 4;

@@ -73,12 +73,26 @@ public class AdvancedEnemy : Enemy
 
         if (temporizadorDisparo >= tiempoEntreDisparos)
         {
-            Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+           
+            Vector2 direccion = (player.position - firePoint.position).normalized;
+
+            
+            GameObject bala = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+            
+            bala.GetComponent<EnemyBullet>().SetDirection(direccion);
+
             temporizadorDisparo = 0f;
         }
     }
 
-    
+    private void MirarHacia(Vector2 objetivo)
+    {
+        if (objetivo.x > transform.position.x)
+            transform.localScale = new Vector3(1, 1, 1);
+        else
+            transform.localScale = new Vector3(-1, 1, 1);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
