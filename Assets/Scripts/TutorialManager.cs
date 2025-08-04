@@ -11,7 +11,7 @@ public class DialogueData
     public string text;
     public Sprite image;
 }
-
+// Interfaz para obtener diálogos (polimorfismo)
 public interface IDialogue
 {
     string GetDialogueAt(int index);
@@ -20,7 +20,7 @@ public interface IDialogue
 
 public class TutorialManager : MonoBehaviour, IDialogue
 {
-    public static Action OnTutorialFinished;
+    public static Action OnTutorialFinished;// Evento para notificar que el tutorial terminó
 
     [Header("UI del Tutorial")]
     public GameObject tutorialPanel;
@@ -41,7 +41,7 @@ public class TutorialManager : MonoBehaviour, IDialogue
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        player = FindObjectOfType<Player>();
+        player = UnityEngine.Object.FindFirstObjectByType<Player>();
         if (player != null) player.EnableControl(false);
 
         ShowDialogue(currentIndex);

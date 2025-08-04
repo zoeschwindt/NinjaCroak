@@ -4,10 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour // Singleton para acceso global
 {
     public static GameManager Instance;
 
+    // Eventos para notificar cambios (usando Action)
     public event Action<int, int> OnCollectiblesChanged;
     public event Action<int, int> OnEnemiesChanged;
     public event Action<int> OnLivesChanged;
@@ -23,11 +24,14 @@ public class GameManager : MonoBehaviour
     [Header("Transición de Nivel")]
     public string nextSceneName = "Nivel2";
 
+    // Estados actuales del juego
+
     private int collectedCount = 0;
     private int defeatedEnemies = 0;
     private int currentLives;
     private int score;
 
+    // Uso de clase genérica para almacenar coleccionables y enemigos
     private GameList<ICollectible> collectibles = new GameList<ICollectible>();
     private GameList<IDamageable> enemies = new GameList<IDamageable>();
 
@@ -44,7 +48,7 @@ public class GameManager : MonoBehaviour
     // COLECCIONABLES
     public void RegisterCollectible(ICollectible collectible)
     {
-        collectibles.Add(collectible);
+        collectibles.Add(collectible);// Agrega coleccionable a la lista
     }
 
     public void AddCollectible()

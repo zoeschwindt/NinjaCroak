@@ -1,4 +1,4 @@
 public interface ICollectible
 {
-    void Collect();
+    void Collect(); // Define que un objeto puede ser recolectado
 }

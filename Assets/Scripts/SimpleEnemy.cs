@@ -7,7 +7,7 @@ public class SimpleEnemy : Enemy
     private bool moviendoDerecha = true;
     private Vector3 escalaOriginal;
 
-    private void Start()
+    protected override void Start()
     {
         escalaOriginal = transform.localScale;
     }
@@ -16,13 +16,13 @@ public class SimpleEnemy : Enemy
     {
         Patrullar();
     }
-    
+    // Método privado para controlar el movimiento de patrulla entre dos puntos
     private void Patrullar()
     {
         if (moviendoDerecha)
         {
             transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-            transform.localScale = new Vector3(Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // derecha
+            transform.localScale = new Vector3(Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z);  // Escala para que el sprite mire hacia la derecha
 
             if (transform.position.x >= puntoDerecho.position.x)
                 moviendoDerecha = false;
@@ -30,7 +30,7 @@ public class SimpleEnemy : Enemy
         else
         {
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-            transform.localScale = new Vector3(-Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // izquierda
+            transform.localScale = new Vector3(-Mathf.Abs(escalaOriginal.x), escalaOriginal.y, escalaOriginal.z); // Escala para que el sprite mire hacia la izquierda
 
             if (transform.position.x <= puntoIzquierdo.position.x)
                 moviendoDerecha = true;
@@ -39,6 +39,7 @@ public class SimpleEnemy : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Si colisiona con el jugador, le quita vida a través del PlayerHealthUI
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealthUI health = collision.gameObject.GetComponent<PlayerHealthUI>();

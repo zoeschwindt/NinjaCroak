@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-public class Player : Character
+public class Player : Character // Herencia: Player hereda de Character
 {
     public static Action<int> OnLifeChanged;
     public static Action<int> OnScoreChanged;
@@ -25,7 +25,8 @@ public class Player : Character
 
     [Header("Muerte por caída")]
     public float alturaMuerte = -10f;
-    // Estados de control
+
+    // Estados internos privados (encapsulamiento)
     private bool canControl = true; 
     private bool isSpeedBoosted = false;
     private bool isJumpBoosted = false;
@@ -36,9 +37,11 @@ public class Player : Character
     private int jumpCount = 0;
     private int maxJumps = 1;
 
-    // Valores base para restaurar stats
+    // Valores base para restaurar stats después de power-ups
     private float baseMoveSpeed;
     private float baseJumpForce;
+
+    // Inventario de power-ups usando diccionario (encapsulación)
     private Dictionary<PowerUp.PowerType, int> powerUpInventory = new Dictionary<PowerUp.PowerType, int>();
 
     private bool wasGrounded = false;
@@ -57,14 +60,14 @@ public class Player : Character
 
     protected override void Awake()
     {
-        base.Awake();
+        base.Awake(); // Polimorfismo: llama método base en clase padre Character
         rb = GetComponent<Rigidbody2D>();
 
         baseMoveSpeed = moveSpeed;
         baseJumpForce = jumpForce;
 
         audioSource = gameObject.AddComponent<AudioSource>();
-
+        // Inicializa inventario power-ups con 0 de cada tipo
         foreach (PowerUp.PowerType type in Enum.GetValues(typeof(PowerUp.PowerType)))
             powerUpInventory[type] = 0;
     }
@@ -99,7 +102,7 @@ public class Player : Character
         bool grounded = IsGrounded();
 
         if (grounded && !wasGrounded)
-            jumpCount = 0; 
+            jumpCount = 0; // Reinicia contador de saltos al tocar suelo
 
         wasGrounded = grounded;
     }
@@ -109,7 +112,8 @@ public class Player : Character
     {
         canControl = enable;
         if (!enable)
-            rb.linearVelocity = Vector2.zero; 
+            rb.linearVelocity = Vector2.zero; // Encapsulamiento para controlar estado del jugador
+
     }
 
     private bool IsGrounded()
@@ -123,7 +127,7 @@ public class Player : Character
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-
+        // Control de orientación y posición del punto de disparo (encapsulamiento)
         if (move > 0)
             sr.flipX = false;
         else if (move < 0)
@@ -166,13 +170,14 @@ public class Player : Character
 
     public void AddPowerUp(PowerUp.PowerType type)
     {
+        // Método para agregar power-up (encapsulamiento)
         if (!powerUpInventory.ContainsKey(type))
             powerUpInventory[type] = 0;
 
         powerUpInventory[type]++;
         OnPowerUpCollected?.Invoke(type, powerUpInventory[type]);
     }
-
+    // Uso de power-up con corutinas para efectos temporales (abstracción)
     public void UsePowerUp(PowerUp.PowerType type)
     {
         if (powerUpInventory[type] > 0)
@@ -194,7 +199,7 @@ public class Player : Character
         jumpForce = baseJumpForce;
         maxJumps = 1;
     }
-
+    // Polimorfismo: sobrescribe método TakeDamage de Character
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
@@ -232,12 +237,12 @@ public class Player : Character
         maxJumps = 1;
         isJumpBoosted = false;
     }
-
+    // Polimorfismo: sobrescribe método Die de Character
     protected override void Die()
     {
         Debug.Log("Jugador muerto por caída");
 
-        // Guarda escena actual antes de morir
+        // Guarda escena actual antes de morir para poder volver a jugar
         GameSession.LastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Moriste");
     }

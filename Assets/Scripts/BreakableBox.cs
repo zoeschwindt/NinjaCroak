@@ -1,14 +1,13 @@
 using UnityEngine;
-
+// Clase simple con un único comportamiento
 public class BreakableBox : MonoBehaviour
 {
-    public GameObject breakEffect; 
+    
     public AudioClip breakSound;   
 
     public void Break()
     {
-        if (breakEffect != null)
-            Instantiate(breakEffect, transform.position, Quaternion.identity);
+        // Uso de AudioSource estático
 
         if (breakSound != null)
             AudioSource.PlayClipAtPoint(breakSound, transform.position);

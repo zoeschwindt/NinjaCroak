@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
         }
     }
-
+    // Métodos públicos que encapsulan la lógica de pausar y resumir el juego
     public void PauseGame()
     {
         isPaused = true;

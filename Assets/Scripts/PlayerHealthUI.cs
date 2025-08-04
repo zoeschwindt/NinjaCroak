@@ -7,7 +7,7 @@ public class PlayerHealthUI : MonoBehaviour
     public int maxLives = 4; 
     public int currentLives;
 
-    public Image[] pizzaImages; 
+    public Image[] pizzaImages; // Array de imágenes que representan las vidas (UI)
 
     void Start()
     {
@@ -25,14 +25,16 @@ public class PlayerHealthUI : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            // Guarda escena actual antes de morir
+            // Guarda la escena actual para poder volver a ella
             GameSession.LastSceneName = SceneManager.GetActiveScene().name;
+            // Cambia a escena de "Moriste"
             SceneManager.LoadScene("Moriste");
         }
     }
 
     void UpdateLivesUI()
     {
+        // Actualiza el UI activando/desactivando imágenes según vida actual
         for (int i = 0; i < pizzaImages.Length; i++)
         {
             pizzaImages[i].enabled = (i < currentLives);

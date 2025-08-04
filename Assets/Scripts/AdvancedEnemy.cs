@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+// Herencia: AdvancedEnemy hereda de Enemy (comportamiento base de enemigos)
 public class AdvancedEnemy : Enemy
 {
     [Header("Patrullaje")]
@@ -22,7 +24,7 @@ public class AdvancedEnemy : Enemy
 
     protected override void Start()
     {
-        base.Start();
+        base.Start();  // Polimorfismo: llama al Start() definido en Enemy
         player = GameObject.FindGameObjectWithTag("Player").transform;
         escalaOriginal = new Vector3(
             Mathf.Abs(transform.localScale.x),
@@ -49,7 +51,7 @@ public class AdvancedEnemy : Enemy
             Patrullar();
         }
     }
-
+    //  Método propio (patrullaje) sin retorno
     private void Patrullar()
     {
         if (moviendoDerecha)
@@ -69,7 +71,7 @@ public class AdvancedEnemy : Enemy
                 moviendoDerecha = true;
         }
     }
-
+    // Método propio (perseguir jugador)
     private void PerseguirJugador()
     {
         bool jugadorADerecha = player.position.x > transform.position.x;
@@ -86,6 +88,7 @@ public class AdvancedEnemy : Enemy
         MirarHacia(jugadorADerecha);
     }
 
+    // Método con temporizador: controla frecuencia de disparo
     private void Disparar()
     {
         temporizadorDisparo += Time.deltaTime;
@@ -94,6 +97,7 @@ public class AdvancedEnemy : Enemy
         {
             Vector2 direccion = (player.position - firePoint.position).normalized;
 
+            //  Instanciación de objeto (bala) en runtime
             GameObject bala = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             bala.GetComponent<EnemyBullet>().SetDirection(direccion);
 
@@ -101,16 +105,23 @@ public class AdvancedEnemy : Enemy
         }
     }
 
-    // Esta función gira el enemigo sin deformarlo
+    // Método reutilizable para orientar sprite y punto de disparo
     private void MirarHacia(bool haciaDerecha)
     {
-        transform.localScale = new Vector3(
-            haciaDerecha ? Mathf.Abs(escalaOriginal.x) : -Mathf.Abs(escalaOriginal.x),
-            escalaOriginal.y,
-            escalaOriginal.z
-        );
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+            sr.flipX = haciaDerecha; 
+
+        Vector3 pos = firePoint.localPosition;
+        float distancia = Mathf.Abs(pos.x);
+
+        pos.x = haciaDerecha ? distancia : -distancia;
+        firePoint.localPosition = pos;
     }
 
+
+
+    // Colisión con el jugador
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

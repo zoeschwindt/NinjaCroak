@@ -1,5 +1,8 @@
 using UnityEngine;
 
+//  Clase base abstracta para todos los enemigos
+// Implementa interfaz IDamageable
+
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
     public float moveSpeed = 2f;
