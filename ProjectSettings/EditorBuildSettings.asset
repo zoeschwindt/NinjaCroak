@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: a0df1732f8939a943acc6944f3274761
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Moriste.unity
     guid: 80641fadbd20b454eb014b81c712f649
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Credits.unity
     guid: f351751ec8b1b2c4fb2864cc15e1913a
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: a0df1732f8939a943acc6944f3274761
+    path: Assets/Scenes/Victory.unity
+    guid: 9a7c0ad2ea3540d4693bbcc43b7d3436
   - enabled: 1
     path: Assets/Scenes/Nivel2.unity
     guid: 3eb269de8a14a3b4bad8cc581da5bb98

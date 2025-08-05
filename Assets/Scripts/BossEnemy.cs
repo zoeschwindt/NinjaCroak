@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Herencia: BossEnemy hereda de Enemy
+
 public class BossEnemy : Enemy
 {
     [Header("Movimiento")]
@@ -23,14 +23,14 @@ public class BossEnemy : Enemy
 
     private bool EstaEnElSuelo()
     {
-        // Encapsulamiento: este método privado solo lo usa la clase
+        
 
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     protected override void Start()
     {
-        base.Start(); 
+        base.Start();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -55,7 +55,7 @@ public class BossEnemy : Enemy
         else
             transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
 
-        
+
         if (player.position.y > transform.position.y + 1f && Mathf.Abs(rb.linearVelocity.y) < 0.1f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
@@ -95,13 +95,13 @@ public class BossEnemy : Enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        // Implementación de interfaz IDamageable en PlayerHealthUI
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerHealthUI health = collision.gameObject.GetComponent<PlayerHealthUI>();
             if (health != null)
             {
-                health.TakeDamage(2); 
+                health.TakeDamage(2);
             }
         }
         // Interacción con objetos rompibles
@@ -131,13 +131,13 @@ public class BossEnemy : Enemy
 
     void LateUpdate()
     {
-        float maxAltura = 5f; 
+        float maxAltura = 5f;
         if (transform.position.y > maxAltura)
         {
             Vector3 pos = transform.position;
             pos.y = maxAltura;
             transform.position = pos;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); 
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         }
     }
 

@@ -5905,7 +5905,7 @@ MonoBehaviour:
   rangoPersecucion: 5
   projectilePrefab: {fileID: 6140356386374667728, guid: 6fc954e04e769e6499622b22c33e13ca, type: 3}
   firePoint: {fileID: 1963693071}
-  rangoDisparo: 1
+  rangoDisparo: 5
   tiempoEntreDisparos: 2
 --- !u!61 &1031198470
 BoxCollider2D:
@@ -16690,7 +16690,7 @@ MonoBehaviour:
   rangoPersecucion: 5
   projectilePrefab: {fileID: 6140356386374667728, guid: 6fc954e04e769e6499622b22c33e13ca, type: 3}
   firePoint: {fileID: 385604054}
-  rangoDisparo: 1
+  rangoDisparo: 5
   tiempoEntreDisparos: 2
 --- !u!61 &1552895504
 BoxCollider2D:
@@ -19810,7 +19810,7 @@ MonoBehaviour:
   rangoPersecucion: 5
   projectilePrefab: {fileID: 6140356386374667728, guid: 6fc954e04e769e6499622b22c33e13ca, type: 3}
   firePoint: {fileID: 464459074}
-  rangoDisparo: 1
+  rangoDisparo: 5
   tiempoEntreDisparos: 2
 --- !u!61 &2124597554
 BoxCollider2D:
@@ -20550,6 +20550,10 @@ PrefabInstance:
     - target: {fileID: 7579368828990103213, guid: 2187cdb433ae0cf4f8fd56e51c51f472, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315129148788665459, guid: 2187cdb433ae0cf4f8fd56e51c51f472, type: 3}
+      propertyPath: health
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8315129148788665459, guid: 2187cdb433ae0cf4f8fd56e51c51f472, type: 3}
       propertyPath: puntoDerecho

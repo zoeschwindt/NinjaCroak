@@ -16,7 +16,7 @@ public class SimpleEnemy : Enemy
     {
         Patrullar();
     }
-    // Método privado para controlar el movimiento de patrulla entre dos puntos
+   
     private void Patrullar()
     {
         if (moviendoDerecha)

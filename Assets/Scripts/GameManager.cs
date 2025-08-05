@@ -4,11 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour // Singleton para acceso global
+public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    // Eventos para notificar cambios (usando Action)
+    
     public event Action<int, int> OnCollectiblesChanged;
     public event Action<int, int> OnEnemiesChanged;
     public event Action<int> OnLivesChanged;
@@ -24,16 +24,47 @@ public class GameManager : MonoBehaviour // Singleton para acceso global
     [Header("Transición de Nivel")]
     public string nextSceneName = "Nivel2";
 
-    // Estados actuales del juego
+    
 
     private int collectedCount = 0;
     private int defeatedEnemies = 0;
     private int currentLives;
     private int score;
 
-    // Uso de clase genérica para almacenar coleccionables y enemigos
+    
     private GameList<ICollectible> collectibles = new GameList<ICollectible>();
     private GameList<IDamageable> enemies = new GameList<IDamageable>();
+
+
+    void Start()
+    {
+        var masCercano = GameManager.Instance.GetClosestEnemyToPlayer(transform);
+        if (masCercano != null)
+            Debug.Log("Enemigo más cercano: " + masCercano.name);
+    }
+
+
+        public Enemy GetClosestEnemyToPlayer(Transform player)
+    {
+        // LINQ + Lambda: Ordena los enemigos según la distancia y devuelve el más cercano.
+        return enemies.GetAll()
+            .OfType<Enemy>() // Convierte la lista a solo enemigos (por si hay otros IDamageable).
+            .OrderBy(enemy => Vector2.Distance(enemy.transform.position, player.position)) // LAMBDA
+            .FirstOrDefault();
+    }
+
+
+    public Collectible GetClosestCollectibleToPlayer(Transform player)
+    {
+        // LINQ + lambda: busca el coleccionable más cercano que siga existiendo
+        return collectibles.GetAll()
+            .OfType<Collectible>()
+            .Where(collectible => collectible != null) // <-- filtra sólo los que existen
+            .OrderBy(collectible => Vector2.Distance(collectible.transform.position, player.position))
+            .FirstOrDefault();
+    }
+
+
 
     void Awake()
     {

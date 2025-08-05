@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-// Herencia: AdvancedEnemy hereda de Enemy (comportamiento base de enemigos)
+
 public class AdvancedEnemy : Enemy
 {
     [Header("Patrullaje")]
@@ -24,7 +24,7 @@ public class AdvancedEnemy : Enemy
 
     protected override void Start()
     {
-        base.Start();  // Polimorfismo: llama al Start() definido en Enemy
+        base.Start();  
         player = GameObject.FindGameObjectWithTag("Player").transform;
         escalaOriginal = new Vector3(
             Mathf.Abs(transform.localScale.x),
@@ -110,7 +110,7 @@ public class AdvancedEnemy : Enemy
     {
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
-            sr.flipX = haciaDerecha; 
+            sr.flipX = haciaDerecha;
 
         Vector3 pos = firePoint.localPosition;
         float distancia = Mathf.Abs(pos.x);

@@ -1,14 +1,14 @@
 using UnityEngine;
-// Implementa la interfaz ICollectible (cumple polimorfismo)
+
 public class PowerUp : MonoBehaviour, ICollectible
 {
     public enum PowerType { DoubleJump, SpeedBoost }
     public PowerType powerType;
 
-    // Implementación del método de la interfaz
+    
     public void Collect()
     {
-        // Busca al jugador y le añade el power-up correspondiente
+        
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {

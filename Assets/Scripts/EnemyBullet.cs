@@ -10,7 +10,7 @@ public class EnemyBullet : MonoBehaviour
     {
         Destroy(gameObject, tiempoVida);
     }
-    // Método con parámetro: establece dirección de la bala
+   
     public void SetDirection(Vector2 dir)
     {
         direccion = dir.normalized;

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//  Implementa interfaz ICollectible
 public class Collectible : MonoBehaviour, ICollectible
 {
     public void Collect()

@@ -27,7 +27,7 @@ public class PlayerHealthUI : MonoBehaviour
         {
             // Guarda la escena actual para poder volver a ella
             GameSession.LastSceneName = SceneManager.GetActiveScene().name;
-            // Cambia a escena de "Moriste"
+            
             SceneManager.LoadScene("Moriste");
         }
     }

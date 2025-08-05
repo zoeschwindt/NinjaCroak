@@ -1,5 +1,5 @@
 using UnityEngine;
-// Clase simple con un único comportamiento
+
 public class BreakableBox : MonoBehaviour
 {
     

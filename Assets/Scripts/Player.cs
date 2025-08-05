@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-public class Player : Character // Herencia: Player hereda de Character
+public class Player : Character 
 {
     public static Action<int> OnLifeChanged;
     public static Action<int> OnScoreChanged;
@@ -26,7 +26,7 @@ public class Player : Character // Herencia: Player hereda de Character
     [Header("Muerte por caída")]
     public float alturaMuerte = -10f;
 
-    // Estados internos privados (encapsulamiento)
+    
     private bool canControl = true; 
     private bool isSpeedBoosted = false;
     private bool isJumpBoosted = false;
@@ -41,7 +41,7 @@ public class Player : Character // Herencia: Player hereda de Character
     private float baseMoveSpeed;
     private float baseJumpForce;
 
-    // Inventario de power-ups usando diccionario (encapsulación)
+    // Inventario de power-ups usando diccionario 
     private Dictionary<PowerUp.PowerType, int> powerUpInventory = new Dictionary<PowerUp.PowerType, int>();
 
     private bool wasGrounded = false;
@@ -60,7 +60,7 @@ public class Player : Character // Herencia: Player hereda de Character
 
     protected override void Awake()
     {
-        base.Awake(); // Polimorfismo: llama método base en clase padre Character
+        base.Awake(); 
         rb = GetComponent<Rigidbody2D>();
 
         baseMoveSpeed = moveSpeed;
@@ -95,6 +95,16 @@ public class Player : Character // Herencia: Player hereda de Character
             Die();
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            var closest = GameManager.Instance.GetClosestCollectibleToPlayer(transform);
+            if (closest != null)
+                Debug.Log("Coleccionable más cercano: " + closest.name);
+            else
+                Debug.Log("No hay coleccionables en la escena.");
+        }
+
+
     }
 
     void FixedUpdate()
@@ -102,7 +112,7 @@ public class Player : Character // Herencia: Player hereda de Character
         bool grounded = IsGrounded();
 
         if (grounded && !wasGrounded)
-            jumpCount = 0; // Reinicia contador de saltos al tocar suelo
+            jumpCount = 0; 
 
         wasGrounded = grounded;
     }
@@ -112,7 +122,7 @@ public class Player : Character // Herencia: Player hereda de Character
     {
         canControl = enable;
         if (!enable)
-            rb.linearVelocity = Vector2.zero; // Encapsulamiento para controlar estado del jugador
+            rb.linearVelocity = Vector2.zero; 
 
     }
 
@@ -127,7 +137,7 @@ public class Player : Character // Herencia: Player hereda de Character
         rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        // Control de orientación y posición del punto de disparo (encapsulamiento)
+        
         if (move > 0)
             sr.flipX = false;
         else if (move < 0)
@@ -170,14 +180,14 @@ public class Player : Character // Herencia: Player hereda de Character
 
     public void AddPowerUp(PowerUp.PowerType type)
     {
-        // Método para agregar power-up (encapsulamiento)
+       
         if (!powerUpInventory.ContainsKey(type))
             powerUpInventory[type] = 0;
 
         powerUpInventory[type]++;
         OnPowerUpCollected?.Invoke(type, powerUpInventory[type]);
     }
-    // Uso de power-up con corutinas para efectos temporales (abstracción)
+    
     public void UsePowerUp(PowerUp.PowerType type)
     {
         if (powerUpInventory[type] > 0)
@@ -199,7 +209,7 @@ public class Player : Character // Herencia: Player hereda de Character
         jumpForce = baseJumpForce;
         maxJumps = 1;
     }
-    // Polimorfismo: sobrescribe método TakeDamage de Character
+    
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
@@ -237,12 +247,12 @@ public class Player : Character // Herencia: Player hereda de Character
         maxJumps = 1;
         isJumpBoosted = false;
     }
-    // Polimorfismo: sobrescribe método Die de Character
+    
     protected override void Die()
     {
         Debug.Log("Jugador muerto por caída");
 
-        // Guarda escena actual antes de morir para poder volver a jugar
+        
         GameSession.LastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Moriste");
     }
